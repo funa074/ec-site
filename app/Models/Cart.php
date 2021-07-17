@@ -73,4 +73,5 @@ class Cart extends Model
 
         return $checkout_items;
     }
+    
 }
