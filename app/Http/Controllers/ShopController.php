@@ -29,7 +29,7 @@ class ShopController extends Controller
 
         $data = $cart->showCart($stock_id);
 
-        return view('mycart', $data)->with('message, $message');
+        return view('mycart', $data)->with('message', $message);
     }
 
     public function deleteCart(Request $request, Cart $cart)
@@ -38,6 +38,12 @@ class ShopController extends Controller
         $message = $cart->deleteCart($stock_id);
         $data = $cart->showCart();
 
-        return view ('mycart', $data)->with('message, $message');
+        return view ('mycart', $data)->with('message', $message);
+    }
+
+    public function checkout(Cart $cart)
+    {
+        $checkout_info = $cart->checkoutCart();
+        return view('checkout');
     }
 }
