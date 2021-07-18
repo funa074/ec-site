@@ -85,6 +85,27 @@
        <main class="py-4">
            @yield('content')
        </main>
+
+       <footer class="footer_design">
+
+        @guest
+            <p class="nav-item" style="display:inline;">
+                <a href="{{ route('login') }}" class="nav-link" style="color:#fefefe; display:inline;">{{ __('ログイン') }}</a>
+
+            @if (Route::has('resister'))
+                    <a href="{{ route('resister') }}" class="nav-link" tyle="color:#fefefe; display:inline;">{{ __('会員登録')}}</a>
+                </p>
+            @endif
+
+        @endguest
+        
+        <div style="margin-top:24px;">
+            なんでも売ります<br>
+            <p style="font-size:2.4em">ショッピングサイト🍐</p><br>
+            </div>
+     
+            <p style="font-size:0.7em;">@copyright @mukae9 @funa074</p>     
+       </footer>
    </div>
 </body>
 </html>
