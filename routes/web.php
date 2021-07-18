@@ -15,14 +15,14 @@ use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'ShopController@index');
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/mycart', 'ShopController@mycart')->name('cart')->middleware('auth');
-Route::post('/mycart', 'ShopController@addMycart');
+Route::group(['middleware' => ['auth']], function() {
 
-Route::post('/cartdelete', 'ShopController@deleteCart');
+  Route::get('/mycart', 'ShopController@mycart');
+  Route::post('/mycart', 'ShopController@addMycart');
+  Route::post('/cartdelete', 'ShopController@deleteCart');
+  Route::post('/checkout', 'ShopController@checkout');
+});
 
-Route::post('/checkout', 'ShopController@checkout');
+Auth::routes();
